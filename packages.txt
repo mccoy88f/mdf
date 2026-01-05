@@ -4,6 +4,12 @@
 # Riavvia con: docker-compose restart app
 
 # ═══════════════════════════════════════════════════════════
+# 🌍 INTERNAZIONALIZZAZIONE (già incluso di default)
+# ═══════════════════════════════════════════════════════════
+
+next-intl
+
+# ═══════════════════════════════════════════════════════════
 # 📦 PACCHETTI COMUNI - Decommentali se ti servono
 # ═══════════════════════════════════════════════════════════
 

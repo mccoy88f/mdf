@@ -18,6 +18,7 @@ curl -sSL https://raw.githubusercontent.com/mccoy88f/mdf/main/setup.sh | bash -s
 - **Shadcn/UI** - Componenti UI moderni e responsive basati su Radix UI
 - **Tailwind CSS** - Styling utility-first
 - **Docker** - Containerizzazione completa
+- **next-intl** - Internazionalizzazione (IT/EN preconfigurato) 🌍
 
 ### 💾 Risorse
 
@@ -26,6 +27,12 @@ curl -sSL https://raw.githubusercontent.com/mccoy88f/mdf/main/setup.sh | bash -s
 **Classificazione:** LIGHT-MEDIUM - Perfetto per VPS da 1GB+ (con swap) o 2GB+ (comodo)
 
 👉 Vedi [PERFORMANCE.md](PERFORMANCE.md) per ottimizzazioni e benchmark dettagliati
+
+### 🌍 Internazionalizzazione
+
+MDF include **next-intl** preconfigurato con Italiano e Inglese. I testi sono già internazionalizzati - NON usare mai stringhe hardcoded!
+
+👉 Vedi [I18N.md](I18N.md) per la guida completa
 
 ## 📋 Prerequisiti
 

@@ -1,0 +1,45 @@
+{
+  "HomePage": {
+    "title": "MDF - My Development Framework",
+    "subtitle": "Complete template: Next.js + PostgreSQL + Prisma + Shadcn/UI",
+    "welcome": "Welcome to your new MDF project",
+    "features": {
+      "nextjs": {
+        "title": "Next.js 14",
+        "description": "App Router, Server Components, TypeScript"
+      },
+      "database": {
+        "title": "PostgreSQL + Prisma",
+        "description": "Relational database with type-safe ORM"
+      },
+      "ui": {
+        "title": "Shadcn/UI",
+        "description": "Modern and responsive components"
+      }
+    },
+    "buttons": {
+      "start": "Start Developing",
+      "docs": "Documentation"
+    },
+    "info": {
+      "title": "Ready to start?",
+      "prismaStudio": "Prisma Studio",
+      "prismaStudioDesc": "Access {link} to manage the database",
+      "database": "Database",
+      "databaseDesc": "PostgreSQL running on port 5432",
+      "hotReload": "Hot Reload",
+      "hotReloadDesc": "Changes automatically updated"
+    },
+    "footer": {
+      "poweredBy": "Powered by",
+      "source": "Source code",
+      "docs": "Documentation",
+      "credits": "Created by {author}"
+    }
+  },
+  "Common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  }
+}
