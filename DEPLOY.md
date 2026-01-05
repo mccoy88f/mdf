@@ -8,22 +8,61 @@ Vai su https://github.com/new e crea un repository chiamato `nextjs-starter-temp
 
 ### 2. Pubblica il codice
 
+Scegli il metodo che preferisci:
+
+#### **Metodo A: GitHub CLI (consigliato)**
+
 ```bash
 cd nextjs-starter-template
 
-# Inizializza Git (se non già fatto)
+# Autentica (solo prima volta)
+gh auth login
+
+# Inizializza e pubblica
 git init
-
-# Aggiungi tutti i file
 git add .
+git commit -m "Initial commit: Next.js + PostgreSQL + Prisma + Shadcn/UI template"
+gh repo create nextjs-starter-template --public --source=. --push
+```
 
-# Primo commit
+#### **Metodo B: SSH**
+
+```bash
+cd nextjs-starter-template
+
+# Prima volta: configura SSH
+ssh-keygen -t ed25519 -C "tua-email@example.com"
+cat ~/.ssh/id_ed25519.pub  # Aggiungi su https://github.com/settings/keys
+
+# Inizializza Git
+git init
+git add .
+git commit -m "Initial commit: Next.js + PostgreSQL + Prisma + Shadcn/UI template"
+
+# Collega al repository remoto (sostituisci TUO-USERNAME)
+git remote add origin git@github.com:TUO-USERNAME/nextjs-starter-template.git
+
+# Push
+git branch -M main
+git push -u origin main
+```
+
+#### **Metodo C: HTTPS con Token**
+
+```bash
+cd nextjs-starter-template
+
+# Crea token su: https://github.com/settings/tokens (scope: repo)
+
+# Inizializza Git
+git init
+git add .
 git commit -m "Initial commit: Next.js + PostgreSQL + Prisma + Shadcn/UI template"
 
 # Collega al repository remoto (sostituisci TUO-USERNAME)
 git remote add origin https://github.com/TUO-USERNAME/nextjs-starter-template.git
 
-# Push
+# Push (username + TOKEN come password)
 git branch -M main
 git push -u origin main
 ```
@@ -107,11 +146,22 @@ docker exec -it nextjs-app npm run prisma:push
 ### 3. Crea il tuo repository
 
 ```bash
+# Se hai usato SSH
 git remote remove origin  # Rimuovi link al template
-git remote add origin https://github.com/TUO-USERNAME/il-tuo-progetto.git
+git remote add origin git@github.com:TUO-USERNAME/il-tuo-progetto.git
 git add .
 git commit -m "Initial commit from template"
 git push -u origin main
+
+# Se hai usato HTTPS con token
+git remote remove origin
+git remote add origin https://github.com/TUO-USERNAME/il-tuo-progetto.git
+git add .
+git commit -m "Initial commit from template"
+git push -u origin main  # Username + TOKEN come password
+
+# Se hai usato GitHub CLI
+gh repo create il-tuo-progetto --public --source=. --push
 ```
 
 ## 🌐 Uso come Template GitHub
@@ -163,9 +213,11 @@ Il template è già compatibile con orchestratori. Basta adattare il `docker-com
 
 ```bash
 # Nel repository del template
-git pull origin main
+git add .
+git commit -m "feat: nuove funzionalità"
+git push  # Usa il metodo che hai configurato (SSH/HTTPS/gh)
 
-# Rebuilda i container
+# Rebuilda i container nei progetti che usano il template
 docker-compose up --build -d
 ```
 

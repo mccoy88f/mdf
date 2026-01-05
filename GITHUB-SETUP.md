@@ -13,12 +13,81 @@
 
 ### 2️⃣ Pubblica il codice
 
+Scegli uno dei 3 metodi:
+
+#### **Metodo 1: GitHub CLI (più semplice) ⭐ CONSIGLIATO**
+
 ```bash
 # Estrai lo ZIP
 unzip nextjs-starter-template.zip
 cd nextjs-starter-template
 
+# Installa GitHub CLI (se non ce l'hai)
+# Ubuntu/Debian:
+sudo apt install gh
+# macOS:
+brew install gh
+# Windows: scarica da https://cli.github.com
+
+# Autentica con GitHub (solo la prima volta)
+gh auth login
+# Seleziona: GitHub.com → HTTPS → Login with browser
+
 # Inizializza Git
+git init
+git add .
+git commit -m "Initial commit: Next.js starter template"
+
+# Crea repository e fai push automaticamente
+gh repo create nextjs-starter-template --public --source=. --push
+```
+
+#### **Metodo 2: SSH (sicuro, nessuna password)**
+
+**Prima volta?** Segui la guida completa: [SSH-SETUP.md](SSH-SETUP.md)
+
+```bash
+# Prima volta: genera chiave SSH
+ssh-keygen -t ed25519 -C "tua-email@example.com"
+# Premi Enter per accettare il percorso predefinito
+# (Opzionale) Inserisci una passphrase
+
+# Copia la chiave pubblica
+cat ~/.ssh/id_ed25519.pub
+# Copia tutto l'output
+
+# Aggiungi su GitHub:
+# 1. Vai su: https://github.com/settings/keys
+# 2. Click "New SSH key"
+# 3. Incolla la chiave
+# 4. Click "Add SSH key"
+
+# Ora pubblica il codice
+cd nextjs-starter-template
+git init
+git add .
+git commit -m "Initial commit: Next.js starter template"
+
+# Usa SSH invece di HTTPS
+git remote add origin git@github.com:TUO-USERNAME/nextjs-starter-template.git
+
+# Push
+git branch -M main
+git push -u origin main
+```
+
+#### **Metodo 3: HTTPS con Personal Access Token**
+
+```bash
+# Crea un token su GitHub:
+# 1. Vai su: https://github.com/settings/tokens
+# 2. Click "Generate new token (classic)"
+# 3. Nome: "Git Push Token"
+# 4. Seleziona scope: ✅ repo (tutti)
+# 5. Click "Generate token"
+# 6. COPIA IL TOKEN (lo vedrai solo una volta!)
+
+cd nextjs-starter-template
 git init
 git add .
 git commit -m "Initial commit: Next.js starter template"
@@ -26,10 +95,16 @@ git commit -m "Initial commit: Next.js starter template"
 # Sostituisci TUO-USERNAME con il tuo username GitHub
 git remote add origin https://github.com/TUO-USERNAME/nextjs-starter-template.git
 
-# Push
+# Push (ti chiederà credenziali)
 git branch -M main
 git push -u origin main
+
+# Quando richiesto:
+# Username: tuo-username
+# Password: [INCOLLA IL TOKEN, NON la password di GitHub!]
 ```
+
+**⚠️ IMPORTANTE**: GitHub non accetta più password normali dal 2021. Devi usare un Personal Access Token o SSH.
 
 ### 3️⃣ Configura come Template (Opzionale)
 
