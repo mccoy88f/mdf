@@ -22,6 +22,38 @@ if ! command -v docker-compose &> /dev/null && ! docker compose version &> /dev/
 fi
 
 echo "✅ Docker trovato"
+
+# Verifica permessi Docker
+if ! docker ps &> /dev/null; then
+    echo ""
+    echo "⚠️  PERMESSI DOCKER MANCANTI"
+    echo ""
+    echo "Devi aggiungere il tuo utente al gruppo docker:"
+    echo ""
+    echo "  sudo usermod -aG docker \$USER"
+    echo "  newgrp docker"
+    echo ""
+    echo "Oppure esegui con sudo:"
+    echo "  sudo -E bash -c 'curl -sSL https://raw.githubusercontent.com/mccoy88f/mdf/main/setup.sh | bash -s -- $PROJECT_NAME'"
+    echo ""
+    
+    # Chiedi se usare sudo
+    read -p "Vuoi continuare con sudo? (s/n) " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Ss]$ ]]; then
+        echo "❌ Setup annullato. Configura i permessi Docker e riprova."
+        exit 1
+    fi
+    
+    # Se l'utente vuole sudo, usa sudo per docker-compose
+    DOCKER_CMD="sudo docker-compose"
+    DOCKER_EXEC="sudo docker exec"
+else
+    # Permessi OK, usa comandi normali
+    DOCKER_CMD="docker-compose"
+    DOCKER_EXEC="docker exec"
+fi
+
 echo ""
 
 # Clona il repository
