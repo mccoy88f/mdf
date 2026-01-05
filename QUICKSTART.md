@@ -9,9 +9,13 @@ docker-compose up -d
 # 2. Inizializza database (prima volta)
 docker exec -it nextjs-app npm run prisma:push
 
-# 3. Apri il browser
+# 3. (Opzionale) Crea utente admin
+docker exec -it nextjs-app npm run prisma:seed
+
+# 4. Apri il browser
 # App: http://localhost:3000
 # Database GUI: http://localhost:5555
+# Admin: admin@mdf.local
 ```
 
 ## Aggiungere Componenti UI

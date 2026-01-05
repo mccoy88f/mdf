@@ -5,54 +5,30 @@ const prisma = new PrismaClient()
 async function main() {
   console.log('🌱 Seeding database...')
 
-  // Crea utenti di esempio
-  const user1 = await prisma.user.create({
-    data: {
-      email: 'mario.rossi@example.com',
-      name: 'Mario Rossi',
+  // Crea utente admin di default
+  const admin = await prisma.user.upsert({
+    where: { email: 'admin@mdf.local' },
+    update: {},
+    create: {
+      email: 'admin@mdf.local',
+      name: 'Admin',
       posts: {
         create: [
           {
-            title: 'Il mio primo post',
-            content: 'Questo è il contenuto del mio primo post su questo blog!',
-            published: true,
-          },
-          {
-            title: 'Post in bozza',
-            content: 'Questo post è ancora in fase di scrittura...',
-            published: false,
-          },
-        ],
-      },
-    },
-  })
-
-  const user2 = await prisma.user.create({
-    data: {
-      email: 'lucia.verdi@example.com',
-      name: 'Lucia Verdi',
-      posts: {
-        create: [
-          {
-            title: 'Benvenuti nel mio blog',
-            content: 'Ciao a tutti! Sono felice di iniziare questa avventura.',
+            title: 'Benvenuto in MDF',
+            content: 'Questo è il tuo primo post. Modifica o elimina questo contenuto e inizia a creare la tua applicazione!',
             published: true,
           },
         ],
       },
-    },
-  })
-
-  const user3 = await prisma.user.create({
-    data: {
-      email: 'paolo.bianchi@example.com',
-      name: 'Paolo Bianchi',
     },
   })
 
   console.log('✅ Database seeded successfully!')
-  console.log(`   Created users: ${user1.name}, ${user2.name}, ${user3.name}`)
-  console.log(`   Created 3 posts`)
+  console.log(`   Admin user: ${admin.email}`)
+  console.log(`   User ID: ${admin.id}`)
+  console.log('')
+  console.log('🎉 Puoi ora usare l\'applicazione e creare i tuoi dati!')
 }
 
 main()

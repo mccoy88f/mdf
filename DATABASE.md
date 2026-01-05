@@ -24,15 +24,27 @@ exit
 
 Ora Prisma Studio mostra le tabelle `users` e `posts` (vuote).
 
-### Step 2: Popolare con Dati di Esempio (Opzionale)
+### Step 2: Utente Admin (Automatico)
 
+Lo script `setup.sh` crea automaticamente un utente admin:
+- Email: `admin@example.com`
+- Nome: `Admin`
+
+**Per crearlo manualmente:**
 ```bash
-# Popola con 3 utenti e 3 post di esempio
 docker exec -it nextjs-app npm run prisma:seed
 ```
 
+### Step 3: Dati di Esempio (Opzionale)
+
+Se vuoi popolare con 3 utenti e 3 post di esempio:
+
+```bash
+docker exec -it nextjs-app npm run prisma:seed-example
+```
+
 **Risultato:** Prisma Studio ora mostra:
-- 3 Users (Mario Rossi, Lucia Verdi, Paolo Bianchi)
+- 4 Users (Admin + 3 utenti esempio)
 - 3 Posts (2 pubblicati, 1 bozza)
 
 ## 📊 Verificare i Dati

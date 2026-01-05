@@ -83,23 +83,38 @@ echo ""
 
 # Avvia Docker Compose
 echo "🐳 Avvio container Docker..."
-docker-compose up -d
+$DOCKER_CMD up -d
 
 echo "⏳ Attendo che i container siano pronti..."
-sleep 10
+sleep 15
 
-# Inizializza database
+# Inizializza database AUTOMATICAMENTE
 echo "🗄️  Inizializzazione database..."
-docker exec -it nextjs-app npm run prisma:push
+echo "   Creazione tabelle..."
+$DOCKER_EXEC nextjs-app npm run prisma:push > /dev/null 2>&1
 
-# Popola con dati di esempio (opzionale)
-echo "🌱 Vuoi popolare il database con dati di esempio? (s/n)"
-read -r response
-if [[ "$response" =~ ^([sS][iI]|[sS])$ ]]; then
-  docker exec -it nextjs-app npm run prisma:seed
-  echo "✅ Database popolato con dati di esempio"
+if [ $? -eq 0 ]; then
+    echo "   ✅ Tabelle create"
+    
+    # Crea utente admin di default
+    echo "   Creazione utente admin..."
+    $DOCKER_EXEC nextjs-app npm run prisma:seed > /dev/null 2>&1
+    
+    if [ $? -eq 0 ]; then
+        echo "   ✅ Utente admin creato"
+        echo ""
+        echo "   👤 Credenziali Admin:"
+        echo "      Email: admin@mdf.local"
+        echo "      (nessuna password configurata)"
+        echo ""
+    else
+        echo "   ⚠️  Utente admin non creato (puoi crearlo dopo con: docker exec nextjs-app npm run prisma:seed)"
+    fi
 else
-  echo "⏭️  Database non popolato (puoi farlo dopo con: docker exec -it nextjs-app npm run prisma:seed)"
+    echo "   ⚠️  Errore inizializzazione database"
+    echo "   Esegui manualmente:"
+    echo "      docker exec nextjs-app npm run prisma:push"
+    echo "      docker exec nextjs-app npm run prisma:seed"
 fi
 
 echo ""

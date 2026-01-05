@@ -78,21 +78,31 @@ docker exec -it nextjs-app sh
 # Crea le tabelle dal schema Prisma
 npm run prisma:push
 
-# (Opzionale) Aggiungi dati di esempio
-npx prisma db seed
+# (Opzionale) Crea utente admin di default
+npm run prisma:seed
 
 # Esci dal container
 exit
 ```
 
-**Nota:** Dopo questo comando, Prisma Studio mostrerà le tabelle `users` e `posts` vuote. Puoi aggiungere dati manualmente da Prisma Studio su http://localhost:5555
+**Nota:** Dopo `prisma:seed`, avrai:
+- 👤 1 Utente Admin: `admin@mdf.local`
+- 📝 1 Post di benvenuto
+
+Puoi poi creare i tuoi dati reali tramite l'applicazione o Prisma Studio.
 
 ### 4. Apri l'applicazione
 
 - **App**: http://localhost:3000
 - **Prisma Studio** (GUI database): http://localhost:5555
 
-**Nota:** Prisma Studio sarà vuoto al primo avvio. Vedi [DATABASE.md](DATABASE.md) per popolare con dati di esempio.
+**📝 Credenziali Admin:** `admin@mdf.local` (creato automaticamente con seed)
+
+**Nota:** Se Prisma Studio è vuoto, esegui prima:
+```bash
+docker exec -it nextjs-app npm run prisma:push  # Crea tabelle
+docker exec -it nextjs-app npm run prisma:seed  # Crea admin
+```
 
 ## 🛠️ Comandi Utili
 
