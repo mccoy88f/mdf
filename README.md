@@ -1,12 +1,12 @@
-# Next.js Starter Template
+# MDF - My Development Framework
 
-Template completo per webapp moderne con **Next.js 14**, **PostgreSQL**, **Prisma ORM** e **Shadcn/UI**.
+**My Development Framework (MDF)** è un template completo per webapp moderne con **Next.js 14**, **PostgreSQL**, **Prisma ORM** e **Shadcn/UI**.
 
 > 🎯 **Uso da GitHub**: Puoi creare un nuovo progetto con un solo comando! Vedi [DEPLOY.md](DEPLOY.md)
 
 ```bash
 # Setup automatico da GitHub
-curl -sSL https://raw.githubusercontent.com/TUO-USERNAME/nextjs-starter-template/main/setup.sh | bash -s -- nome-progetto
+curl -sSL https://raw.githubusercontent.com/mccoy88f/mdf/main/setup.sh | bash -s -- nome-progetto
 ```
 
 ## 🚀 Stack Tecnologico
@@ -18,6 +18,14 @@ curl -sSL https://raw.githubusercontent.com/TUO-USERNAME/nextjs-starter-template
 - **Shadcn/UI** - Componenti UI moderni e responsive basati su Radix UI
 - **Tailwind CSS** - Styling utility-first
 - **Docker** - Containerizzazione completa
+
+### 💾 Risorse
+
+**Development:** ~450-750MB RAM | **Production:** ~200-350MB RAM
+
+**Classificazione:** LIGHT-MEDIUM - Perfetto per VPS da 1GB+ (con swap) o 2GB+ (comodo)
+
+👉 Vedi [PERFORMANCE.md](PERFORMANCE.md) per ottimizzazioni e benchmark dettagliati
 
 ## 📋 Prerequisiti
 
@@ -70,16 +78,43 @@ docker exec -it nextjs-app sh
 # Crea le tabelle dal schema Prisma
 npm run prisma:push
 
+# (Opzionale) Aggiungi dati di esempio
+npx prisma db seed
+
 # Esci dal container
 exit
 ```
+
+**Nota:** Dopo questo comando, Prisma Studio mostrerà le tabelle `users` e `posts` vuote. Puoi aggiungere dati manualmente da Prisma Studio su http://localhost:5555
 
 ### 4. Apri l'applicazione
 
 - **App**: http://localhost:3000
 - **Prisma Studio** (GUI database): http://localhost:5555
 
+**Nota:** Prisma Studio sarà vuoto al primo avvio. Vedi [DATABASE.md](DATABASE.md) per popolare con dati di esempio.
+
 ## 🛠️ Comandi Utili
+
+### Installazione Automatica Pacchetti
+
+Il template include un sistema di **installazione automatica**! Aggiungi pacchetti a `packages.txt` e vengono installati automaticamente al riavvio.
+
+```txt
+# packages.txt
+axios
+lodash
+zod
+react-hook-form
+```
+
+Poi:
+```bash
+docker-compose restart app
+# I pacchetti vengono installati automaticamente! 🎉
+```
+
+👉 Vedi [AUTO-INSTALL.md](AUTO-INSTALL.md) per dettagli completi
 
 ### Sviluppo
 

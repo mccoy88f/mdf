@@ -1,6 +1,7 @@
 {
-  "name": "nextjs-starter-template",
+  "name": "mdf",
   "version": "1.0.0",
+  "description": "My Development Framework - Template Next.js + PostgreSQL + Prisma + Shadcn/UI",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,7 +12,11 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio",
     "prisma:push": "prisma db push",
+    "prisma:seed": "tsx prisma/seed.ts",
     "setup": "npm install && npx prisma generate && npx prisma db push"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "next": "^14.2.0",
@@ -44,6 +49,7 @@
     "@types/react-dom": "^18.3.0",
     "typescript": "^5.6.0",
     "prisma": "^5.20.0",
+    "tsx": "^4.19.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",

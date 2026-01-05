@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Script di setup automatico per Next.js Starter Template
-# Usage: curl -sSL https://raw.githubusercontent.com/TUO-USERNAME/nextjs-starter-template/main/setup.sh | bash -s -- nome-progetto
+# Script di setup automatico per MDF (My Development Framework)
+# Usage: curl -sSL https://raw.githubusercontent.com/mccoy88f/mdf/main/setup.sh | bash -s -- nome-progetto
 
 set -e
 
-PROJECT_NAME=${1:-my-nextjs-app}
+PROJECT_NAME=${1:-my-mdf-app}
 
-echo "🚀 Setup Next.js Starter Template: $PROJECT_NAME"
+echo "🚀 Setup MDF (My Development Framework): $PROJECT_NAME"
 echo ""
 
 # Verifica Docker
@@ -25,8 +25,8 @@ echo "✅ Docker trovato"
 echo ""
 
 # Clona il repository
-echo "📥 Clonazione repository..."
-git clone https://github.com/TUO-USERNAME/nextjs-starter-template.git "$PROJECT_NAME"
+echo "📥 Clonazione repository MDF..."
+git clone https://github.com/mccoy88f/mdf.git "$PROJECT_NAME"
 cd "$PROJECT_NAME"
 
 # Rimuovi .git per iniziare un nuovo repository
@@ -59,6 +59,16 @@ sleep 10
 # Inizializza database
 echo "🗄️  Inizializzazione database..."
 docker exec -it nextjs-app npm run prisma:push
+
+# Popola con dati di esempio (opzionale)
+echo "🌱 Vuoi popolare il database con dati di esempio? (s/n)"
+read -r response
+if [[ "$response" =~ ^([sS][iI]|[sS])$ ]]; then
+  docker exec -it nextjs-app npm run prisma:seed
+  echo "✅ Database popolato con dati di esempio"
+else
+  echo "⏭️  Database non popolato (puoi farlo dopo con: docker exec -it nextjs-app npm run prisma:seed)"
+fi
 
 echo ""
 echo "✅ Setup completato!"

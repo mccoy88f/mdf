@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Next.js Starter Template",
-  description: "Template con Next.js, Prisma, PostgreSQL e Shadcn/UI",
+  title: "MDF - My Development Framework",
+  description: "Template completo: Next.js + PostgreSQL + Prisma + Shadcn/UI",
 };
 
 export default function RootLayout({

@@ -8,10 +8,10 @@ export default function Home() {
         {/* Header */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight">
-            Next.js Starter Template
+            MDF - My Development Framework
           </h1>
           <p className="text-xl text-muted-foreground">
-            Con PostgreSQL, Prisma e Shadcn/UI
+            Template completo: Next.js + PostgreSQL + Prisma + Shadcn/UI
           </p>
         </div>
 

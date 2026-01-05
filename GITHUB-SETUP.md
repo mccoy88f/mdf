@@ -5,8 +5,8 @@
 ### 1️⃣ Crea il repository su GitHub
 
 1. Vai su https://github.com/new
-2. Nome repository: `nextjs-starter-template`
-3. Descrizione: "Template Next.js + PostgreSQL + Prisma + Shadcn/UI"
+2. Nome repository: `mdf`
+3. Descrizione: "My Development Framework - Template Next.js + PostgreSQL + Prisma + Shadcn/UI"
 4. Pubblico o Privato (come preferisci)
 5. ❌ NON aggiungere README/gitignore/license (li abbiamo già)
 6. Click "Create repository"
@@ -36,10 +36,10 @@ gh auth login
 # Inizializza Git
 git init
 git add .
-git commit -m "Initial commit: Next.js starter template"
+git commit -m "Initial commit: MDF (My Development Framework)"
 
 # Crea repository e fai push automaticamente
-gh repo create nextjs-starter-template --public --source=. --push
+gh repo create mdf --public --source=. --push
 ```
 
 #### **Metodo 2: SSH (sicuro, nessuna password)**
@@ -69,7 +69,7 @@ git add .
 git commit -m "Initial commit: Next.js starter template"
 
 # Usa SSH invece di HTTPS
-git remote add origin git@github.com:TUO-USERNAME/nextjs-starter-template.git
+git remote add origin git@github.com:mccoy88f/mdf.git
 
 # Push
 git branch -M main
@@ -93,14 +93,14 @@ git add .
 git commit -m "Initial commit: Next.js starter template"
 
 # Sostituisci TUO-USERNAME con il tuo username GitHub
-git remote add origin https://github.com/TUO-USERNAME/nextjs-starter-template.git
+git remote add origin https://github.com/mccoy88f/mdf.git
 
 # Push (ti chiederà credenziali)
 git branch -M main
 git push -u origin main
 
 # Quando richiesto:
-# Username: tuo-username
+# Username: mccoy88f
 # Password: [INCOLLA IL TOKEN, NON la password di GitHub!]
 ```
 
@@ -137,7 +137,7 @@ git push
 
 ```bash
 # Da un'altra directory, prova:
-curl -sSL https://raw.githubusercontent.com/TUO-USERNAME/nextjs-starter-template/main/setup.sh | bash -s -- test-progetto
+curl -sSL https://raw.githubusercontent.com/mccoy88f/mdf/main/setup.sh | bash -s -- test-progetto
 
 # Se funziona, sei pronto! 🎉
 ```
@@ -146,7 +146,7 @@ curl -sSL https://raw.githubusercontent.com/TUO-USERNAME/nextjs-starter-template
 
 ```bash
 # Crea un nuovo progetto da GitHub
-curl -sSL https://raw.githubusercontent.com/TUO-USERNAME/nextjs-starter-template/main/setup.sh | bash -s -- nome-progetto
+curl -sSL https://raw.githubusercontent.com/mccoy88f/mdf/main/setup.sh | bash -s -- nome-progetto
 
 # Oppure usa "Use this template" su GitHub
 ```
@@ -158,7 +158,7 @@ curl -sSL https://raw.githubusercontent.com/TUO-USERNAME/nextjs-starter-template
 Aggiungi questi badge in cima al README.md:
 
 ```markdown
-![GitHub](https://img.shields.io/github/license/TUO-USERNAME/nextjs-starter-template)
+![GitHub](https://img.shields.io/github/license/mccoy88f/mdf)
 ![Docker](https://img.shields.io/badge/docker-ready-blue)
 ![Next.js](https://img.shields.io/badge/Next.js-14-black)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue)
@@ -185,4 +185,4 @@ Tutti i nuovi progetti useranno automaticamente la versione aggiornata!
 
 ---
 
-**Domande?** Apri un issue su GitHub: https://github.com/TUO-USERNAME/nextjs-starter-template/issues
+**Domande?** Apri un issue su GitHub: https://github.com/mccoy88f/mdf/issues

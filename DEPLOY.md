@@ -4,7 +4,7 @@
 
 ### 1. Crea un nuovo repository su GitHub
 
-Vai su https://github.com/new e crea un repository chiamato `nextjs-starter-template`
+Vai su https://github.com/new e crea un repository chiamato `mdf`
 
 ### 2. Pubblica il codice
 
@@ -21,8 +21,8 @@ gh auth login
 # Inizializza e pubblica
 git init
 git add .
-git commit -m "Initial commit: Next.js + PostgreSQL + Prisma + Shadcn/UI template"
-gh repo create nextjs-starter-template --public --source=. --push
+git commit -m "Initial commit: MDF (My Development Framework)"
+gh repo create mdf --public --source=. --push
 ```
 
 #### **Metodo B: SSH**
@@ -37,10 +37,10 @@ cat ~/.ssh/id_ed25519.pub  # Aggiungi su https://github.com/settings/keys
 # Inizializza Git
 git init
 git add .
-git commit -m "Initial commit: Next.js + PostgreSQL + Prisma + Shadcn/UI template"
+git commit -m "Initial commit: MDF (My Development Framework)"
 
 # Collega al repository remoto (sostituisci TUO-USERNAME)
-git remote add origin git@github.com:TUO-USERNAME/nextjs-starter-template.git
+git remote add origin git@github.com:mccoy88f/mdf.git
 
 # Push
 git branch -M main
@@ -57,10 +57,10 @@ cd nextjs-starter-template
 # Inizializza Git
 git init
 git add .
-git commit -m "Initial commit: Next.js + PostgreSQL + Prisma + Shadcn/UI template"
+git commit -m "Initial commit: MDF (My Development Framework)"
 
 # Collega al repository remoto (sostituisci TUO-USERNAME)
-git remote add origin https://github.com/TUO-USERNAME/nextjs-starter-template.git
+git remote add origin https://github.com/mccoy88f/mdf.git
 
 # Push (username + TOKEN come password)
 git branch -M main
